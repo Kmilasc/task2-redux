@@ -12,17 +12,19 @@ interface MovieFavoritesProps {
 
 export function MovieFavorites({ title, description, img, id, price }: MovieFavoritesProps) {
   return (
-    <div className="flex items-start gap-10">
-      <div className="aspect-poster w-[200px] overflow-hidden rounded-lg">
+    <div className="flex flex-col lg:flex-row items-start gap-10">
+      <div className="aspect-poster rounded-lg">
         <img
           alt="Film poster"
-          className="aspect-video overflow-hidden rounded-lg object-cover object-center border h-225 w-100"
+          className="aspect-video overflow-hidden rounded-lg object-cover object-center border h-[400px] w-[260px]"
+          height="400"
           src={img}
+          width="260"
         />
       </div>
-      <div className="grid gap-4 w-3/5">
+      <div className="grid gap-4 flex-1">
         <h2 className="text-2xl font-bold leading-none">{title}</h2>
-        <p className="text-sm leading-none w-3/4 text-justify">{description}</p>
+        <p className="text-sm leading-none w-full lg:w-3/4 text-justify">{description}</p>
       </div>
       <div className="flex items-start ml-auto">
         <Button className="self-start" size="sm" onClick={() => {

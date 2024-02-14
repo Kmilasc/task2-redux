@@ -13,40 +13,44 @@ export function CheckoutItems() {
   const { shipping, subTotal, total } = useCartPricing()
 
   return (
-    <div className="flex flex-col p-14 gap-4 lg:gap-8 h-full">
-      <div className="grid items-start gap-4 md:grid-cols-[1fr_300px] lg:grid-cols-[1fr_400px]">
-        {moviesOnCart.length === 0 && (
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-2xl font-bold leading-none">Carrinho vazio</h2>
-            <Link to="/">
-              <Button className="w-full" size="lg" variant="default">
-                Ver filmes
-              </Button>
-            </Link>
-          </div>
-        )}
-        {moviesOnCart.map(({ id, img, title, price }) => (
-          <div className="flex items-start gap-10">
-            <div className="aspect-poster w-[200px] overflow-hidden rounded-lg">
-              <img
-                alt="Film poster"
-                className="aspect-video overflow-hidden rounded-lg object-cover object-center border h-250 w-100"
-                src={img}
-              />
+    <div className="flex flex-1 flex-col p-14 gap-4 lg:gap-8">
+      <div className="flex flex-col md:flex-row items-start gap-4">
+        <div className="flex flex-col flex-1 gap-10">
+          {moviesOnCart.length === 0 && (
+            <div className="flex flex-col items-center gap-4 flex-1">
+              <h2 className="text-2xl font-bold leading-none">Carrinho vazio</h2>
+              <Link to="/">
+                <Button className="w-full" size="lg" variant="default">
+                  Ver filmes
+                </Button>
+              </Link>
             </div>
-            <div className="flex-row gap-4 w-3/5">
-              <h2 className="text-2xl font-bold leading-none">{title}</h2>
-              <div>Preço: R$ {price.toFixed(2)}</div>
-              <Button className="self-start" size="sm" variant="destructive" onClick={() => {
-                  remove(id);
-                  dec(price);
-                }}>
-                Remover do carrinho
-              </Button>
+          )}
+          {moviesOnCart.map(({ id, img, title, price }) => (
+            <div className="flex flex-col lg:flex-row items-start gap-10">
+              <div className="aspect-poster overflow-hidden rounded-lg">
+                <img
+                  alt="Film poster"
+                  className="aspect-video overflow-hidden rounded-lg object-cover object-center border h-[400px] w-[260px]"
+                  height="400"
+                  src={img}
+                  width="260"
+                />
+              </div>
+              <div className="flex-row gap-4 w-3/5">
+                <h2 className="text-2xl font-bold leading-none">{title}</h2>
+                <div><strong>Preço:</strong> R$ {price.toFixed(2)}</div>
+                <Button className="self-start" size="sm" variant="destructive" onClick={() => {
+                    remove(id);
+                    dec(price);
+                  }}>
+                  Remover do carrinho
+                </Button>
+              </div>
             </div>
-          </div>
-        ))}
-        <Card className="bg-transparent shadow-none p-0">
+          ))}
+        </div>
+        <Card className="bg-transparent shadow-none p-0 self-center md:self-start">
           <CardHeader>
             <CardTitle>Resumo do pedido</CardTitle>
           </CardHeader>

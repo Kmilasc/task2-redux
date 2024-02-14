@@ -6,6 +6,9 @@ export const Route = createLazyFileRoute('/checkout')({
 })
 
 function Checkout() {
-  return 
-  <CheckoutItems />
+  return (
+    <div className='flex flex-col flex-1'>
+      <CheckoutItems />
+    </div>
+  )
 }

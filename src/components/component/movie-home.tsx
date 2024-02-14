@@ -43,20 +43,20 @@ export function MovieHome({ title, description, img, isFavorite, id, price }: Mo
     <div className="flex flex-col gap-4">
       <img
           alt="Cover image"
-          className="aspect-video overflow-hidden rounded-lg object-cover object-center border"
-          height="530"
+          className="aspect-video overflow-hidden rounded-lg object-cover object-center border h-[400px] w-[260px]"
+          height="400"
           src={img}
-          width="400"
+          width="260"
       />
-      <div className="flex flex-col gap-1.5 justify-between h-full">
+      <div className="flex flex-col gap-1.5">
         <div>
           <div className="flex flex-row items-center gap-3">
-              <h1 className="font-semibold text-2xl">{title}</h1>
+              <h1 className="font-semibold text-2xl line-clamp-1">{title}</h1>
               <StarIcon onClick={() => mutate()} className="w-5 h-5 hover:fill-yellow-300 data-[is-favorite=true]:fill-yellow-300" data-is-favorite={isFavorite} />
           </div>
-          <p className="text-justify">{description}</p>
+            <p className="text-justify md:line-clamp-6 md:h-[150px]">{description}</p>
         </div>
-        <div>Preço: R$ {price.toFixed(2)}</div>
+        <div><strong>Preço:</strong> R$ {price.toFixed(2)}</div>
         <Button className="self-start" variant="outline" onClick={() => {
             add(id)
             inc(price)
